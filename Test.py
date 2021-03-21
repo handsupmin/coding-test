@@ -18,7 +18,7 @@ print(data)
 
 answer = 7
 print(f"정답은 {answer}입니다.")
-"""
+
 # itertools, 순열, 조합
 from itertools import permutations
 
@@ -27,3 +27,6 @@ data = ['A', 'B', 'C']
 result = list(permutations(data, 3)) # 모든 순열 구하기
 
 print(result)
+"""
+
+
