@@ -6,6 +6,11 @@
 n, m, k = map(int,input().split())
 a = list(map(int,input().split()))
 
+# .split()을 빼면 한자리씩 리스트에 넣는다
+graph = []
+for i in range(n):
+    graph.append(list(map(int, input())))
+
 # 문자 뒤에 공백 삽입
 for v in range(3):
     print(v, end=' ')
