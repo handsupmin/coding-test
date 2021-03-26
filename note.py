@@ -68,3 +68,7 @@ print(stack[::-1]) # -1의 간격으로 (= 거꾸로)
 a, b, c = '12', '34', '56'
 if '3' in str(a) + str(b) + str(c):
     pass
+
+# range의 3번째 매개 변수
+for j in range(i, 0, -1): # i부터 0+1까지 -1씩
+    pass
