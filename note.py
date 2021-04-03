@@ -72,3 +72,13 @@ if '3' in str(a) + str(b) + str(c):
 # range의 3번째 매개 변수
 for j in range(i, 0, -1): # i부터 0+1까지 -1씩
     pass
+
+# 정렬 관련 arguments
+def setting(data):
+    return data[1]
+# key에는 기준이 되는 함수가 들어간다.
+array = sorted(array, key = setting, reverse = True)
+# lambda 사용 (lambda 인자 : 표현식)
+# ex) lambda x, y : x+y+1
+array = sorted(array, key = lambda x:x[1], reverse = True) 
+
