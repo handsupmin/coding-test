@@ -9,54 +9,17 @@
 
 정수 X가 주어졌을 때, 연산 4개를 적절히 사용해서 1을 만들려고 한다. 연산을 사용하는 횟수의 최솟값을 출력하시오.
 """
+x = int(input())
 
-i = int(input())
-d = [0] * 5
+d = [0] * 30001
 
-def compare(n):
-    d[0] = calc(n)
-    d[1] = calc(n-1) + 1
-    d[2] = calc(n-2) + 2
-    d[3] = calc(n-3) + 3
-    d[4] = calc(n-4) + 4
+for i in range(2, x+1):
+    d[i] = d[i-1] + 1
+    if i % 2 == 0:
+        d[i] = min(d[i], d[i//2]+1)
+    if i % 3 == 0:
+        d[i] = min(d[i], d[i//3]+1)
+    if i % 5 == 0:
+        d[i] = min(d[i], d[i//5]+1)
 
-    print('result:',min(d))
-
-def calc(n):
-    count = 0
-
-    while True:
-        print('n:',n)
-        if n == 1:
-            break
-        if n % 30 == 0:
-            n = n//30
-            count += 3
-        elif n % 25 == 0:
-            n = n//25
-            count += 2 
-        elif n % 15 == 0:
-            n = n//15
-            count += 2
-        elif n % 10 == 0:
-            n = n//10
-            count += 2
-        elif n % 6 == 0:
-            n = n//6
-            count += 2
-        elif n % 5 == 0:
-            n = n//5
-            count += 1
-        elif n % 3 == 0:
-            n = n//3
-            count += 1
-        elif n % 2 == 0:
-            n = n//2
-            count += 1
-        else:
-            n -= 1
-            count += 1
-    print('count:',count)
-    return count
-    
-compare(i)
+print(d[x])

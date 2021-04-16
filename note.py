@@ -1,6 +1,11 @@
 # note.py
-# 여러가지를 연습해보기 위한 연습장입니다.
+# 배운 것을 기록하는 노트입니다.
 
+# 시간 측정
+import time
+start = time.time()  # 시작 시간 저장 
+# 작업 코드 # 
+print("time :", time.time() - start)  # 현재시각 - 시작시간 = 실행 시간
 
 # 문자 입력 받기
 n, m, k = map(int,input().split())
