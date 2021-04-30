@@ -1,14 +1,23 @@
 # Test.py
 # 실험용 파일입니다.
 
-def minmaxSclaer(list):
-    print(list)
-    data = [[x] for x in list]
-    print(data)
-    data = [x[0] for x in data]
-    print(data)
-    return data
+t = int(input())
+array = []
+for _ in range(t):
+    array.append(list(map(int, input().split())))
 
-list1 = [1,2,3,4,5,6,7,8]
-list1 = minmaxSclaer(list1)
-
+for i in array:
+    b = i[1] - i[0]
+    
+    t = 1
+    d = 1
+    count = 1
+    while d <= b:
+        d += t
+        count += 1
+        if d > b:
+            break
+        d += t
+        count += 1
+        t += 1
+    print(count-1)

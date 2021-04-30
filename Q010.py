@@ -24,7 +24,7 @@ def bfs(x,y):
     queue = deque()
     queue.append((x,y))
 
-    while(queue):
+    while queue:
         x, y = queue.popleft()
         for i in range(4):
             nx = x + dx[i]
