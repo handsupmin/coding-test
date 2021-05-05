@@ -1,6 +1,6 @@
 # CodingTest
 
-## These codes are outputs of coding-test preparation by Python.
+## These codes are outputs of coding-test preparation with Python.
 
 There are two folders.
 
