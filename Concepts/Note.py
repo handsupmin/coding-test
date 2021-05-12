@@ -64,6 +64,10 @@ print(b)
 # (x, y, z) for x in Iterator for y in Iterator for z in Iterator if _ if _
 graph = [[] for _ in range(3)]
 
+# 주의
+graph = [[] * (n + 1)] * (n + 1)
+# 이런식으로 쓰면 안됨, 모든 줄이 같은 메모리를 참조하게 됨 (graph[1], graph[2], ...)
+
 # 슬라이스
 # arr[A:B:C]의 의미는, index A 부터 index B 까지 C의 간격으로 배열을 만들어라
 stack = [x for x in range(10)]
@@ -86,4 +90,5 @@ array = sorted(array, key = setting, reverse = True)
 # lambda 사용 (lambda 인자 : 표현식)
 # ex) lambda x, y : x+y+1
 array = sorted(array, key = lambda x:x[1], reverse = True) 
+
 

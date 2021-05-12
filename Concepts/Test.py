@@ -1,39 +1,44 @@
 # Test.py
 # 실험용 파일입니다.
 
-import heapq
-import sys
-input = sys.stdin.readline
-INF = int(1e9)
+INF = int(1e9) # 무한
 
-n, m = map(int, input().split())
-start = int(input())
-graph = [[] for i in range(n + 1)]
-distance = [INF] * (n + 1)
+# 노드의 개수 및 간선의 개수 입력받기
+n = int(input())
+m = int(input())
+# 2차원 리스트(그래프 표현)를 만들고, 모든 값을 무한으로 초기화
+graph = [[INF] * (n + 1)] * (n + 1)
 
-for _ in range(m):
-    # 노드 a 에서 b 까지의 비용이 c
-    a, b, c = map(int, input().split())
-    graph[a].append((b, c))
+print(graph)
 
-def dijkstra(start):
-    q = []
-    heapq.heappush(q, (0, start))
-    distance[start] = 0
-    while q:
-        dist, now = heapq.heappop(q)
-        if distance[now] < dist:
-            continue
-        for i in graph[now]:
-            cost = dist + i[1]
-            if cost < distance[i[0]]:
-                distance[i[0]] = cost
-                heapq.heappush(q, (cost, i[0]))
+graph[1][3] = 4
 
-dijkstra(start)
+print(graph)
+"""
+for a in range(1, n + 1):
+    for b in range(1, n + 1):
+        # 도달할 수 없는 경우, 무한(INFINITY)이라고 출력
+        if graph[a][b] == INF:
+            print("INFINITY", end = " ")
+        # 도달할 수 있는 경우 거리를 출력
+        else:
+            print(graph[a][b], end = " ")
+    print()
 
-for i in range(1, n+1):
-    if distance[i] == INF:
-        print("INFINITY")
-    else:
-        print(distance[i])
+# 점화식에 따라 플로이드 워셜 알고리즘을 수행
+for k in range(1, n+1):
+    for a in range(1, n+1):
+        for b in range(1, n+1):
+            graph[a][b] = min(graph[a][b], graph[a][k] + graph[k][b])
+
+# 수행된 결과를 출력
+for a in range(1, n + 1):
+    for b in range(1, n + 1):
+        # 도달할 수 없는 경우, 무한(INFINITY)이라고 출력
+        if graph[a][b] == INF:
+            print("INFINITY", end = " ")
+        # 도달할 수 있는 경우 거리를 출력
+        else:
+            print(graph[a][b], end = " ")
+    print()
+"""
