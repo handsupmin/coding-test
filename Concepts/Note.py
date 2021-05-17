@@ -91,4 +91,8 @@ array = sorted(array, key = setting, reverse = True)
 # ex) lambda x, y : x+y+1
 array = sorted(array, key = lambda x:x[1], reverse = True) 
 
+# 튜플 받기
+array = [(1, 2)]
+a, b = array[0][0], array[0][1]
+print(a, b)
 
