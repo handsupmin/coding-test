@@ -95,4 +95,8 @@ array = sorted(array, key = lambda x:x[1], reverse = True)
 array = [(1, 2)]
 a, b = array[0][0], array[0][1]
 print(a, b)
+import heapq
+q = []
+heapq.heappush(q, (1, 2))
+a, b = heapq.heappop(q) # a = 1, b = 2
 
