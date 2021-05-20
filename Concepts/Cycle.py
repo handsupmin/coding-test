@@ -1,12 +1,12 @@
-# DisjointSets.py
-# 서로소 집합
+# Cycle.py
+# 사이클 판별 코드
 
 # 특정 원소가 속한 집합을 찾기
 def find_parent(parent, x):
     # 루트 노드가 아니라면, 루트 노드를 찾을 때까지 재귀적으로 호출
     if parent[x] != x:
-        return find_parent(parent, parent[x])
-    return x
+        parent[x] = find_parent(parent, parent[x])
+    return parent[x]
 
 # 두 원소가 속한 집합을 합치기
 def union_parent(parent, a, b):
@@ -25,32 +25,28 @@ parent = [0] * (v + 1) # 부모 테이블 초기화
 for i in range(1, v + 1):
     parent[i] = i
 
+cycle = False # 사이클 발생 여부
+
 # union 연산을 각각 수행
 for i in range(e):
     a, b = map(int, input().split())
-    union_parent(parent, a, b)
+    if find_parent(parent, a) == find_parent(parent, b):
+        cycle = True
+        break
+    else:
+        union_parent(parent, a, b)
 
-# 각 원소가 속한 집합 출력
-print('각 원소가 속한 집합:', end=' ')
-for i in range(1, v + 1):
-    print(find_parent(parent, i), end=' ')
-
-print()
-
-# 부모 테이블 내용 출력
-print('부모 테이블:', end=' ')
-for i in range(1, v + 1):
-    print(parent[i], end=' ')
-
+if cycle:
+    print("사이클이 발생했습니다.")
+else:
+    print("사이클이 발생하지 않았습니다.")
 """
 입력 예시
-6 4
-1 4
+3 3
+1 2
+1 3
 2 3
-2 4
-5 6
 
 출력 예시
-각 원소가 속한 집합: 1 1 1 1 5 5
-부모 테이블: 1 1 2 1 5 5
+사이클이 발생했습니다.
 """
