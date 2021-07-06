@@ -1,6 +1,5 @@
 # Test.py
 # 실험용 파일입니다.
 
-lecture = input().split()
-
-print(lecture)
+a = [1, 2, 3, 4, 5]
+print(sum(a))
