@@ -10,11 +10,11 @@ array.sort()
 target = 1
 now = 0
 
-if target == array[now]:
-    target += 1
+while target >= array[now]:
+    target += array[now]
     now += 1
-
-
+    
+print(target)
 
 """
 입력 예시
