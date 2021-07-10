@@ -8,6 +8,6 @@ heapq.heappush(q, (0,1))
 heapq.heappush(q, (2,3))
 heapq.heappush(q, (4,5))
 
-r = heapq.heappop(q)[1]
+# r = heapq.heappop(q)[1]
 
-print(r)
+print(len(q))
