@@ -1,34 +1,24 @@
+# Q030.py
+# 무지의 먹방 라이브
 import heapq
 
 def solution(food_times, k):
-    answer = 0
+    if sum(food_times) <= k:
+        return -1
+
     q = []
-    num = 0
-    n1 = 0
-    sum_num = 0
-    for value in food_times:
-        num += 1
-        heapq.heappush(q, (value, num))
-    
-    temp = heapq.heappop(q)
-    n1 = temp[0]
-    sum_num += n1 * num
-    while True:
-        num -= 1
-        if num < 0:
-            return -1
-        if k < sum_num:
-            heapq.heappush(q, temp)
-            break
-        temp = heapq.heappop(q)
-        n1 = temp[0] - n1
-        sum_num += n1 * num
-    
-    h = []
-    for a in q:
-        num += 1
-        heapq.heappush(h, (a[1], a[0]))
-    
-    answer = h[k%num][0]
-    
-    return answer
+    for i in range(len(food_times)):
+        heapq.heappush(q, (food_times[i], i+1))
+
+    sum_value = 0
+    previous = 0
+    length = len(q)
+
+    while sum_value + ((q[0][0] - previous) * length) < k:
+        now = heapq.heappop(q)[0]
+        sum_value += (now - previous) * length
+        previous = now
+        length -= 1
+
+    result = sorted(q, key = lambda x: x[1])
+    return result[(k - sum_value) % length][0]
