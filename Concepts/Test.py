@@ -3,11 +3,11 @@
 
 import heapq
 
-q = []
-heapq.heappush(q, (0,1))
-heapq.heappush(q, (2,3))
-heapq.heappush(q, (4,5))
+string = input()
+alpha = []
 
-# r = heapq.heappop(q)[1]
+for i in string:
+    heapq.heappush(alpha, i)
 
-print(len(q))
+while alpha:
+    print(heapq.heappop(alpha))
