@@ -1,13 +1,9 @@
 # Test.py
 # 실험용 파일입니다.
 
-import heapq
+count = 0
 
-string = input()
-alpha = []
+key = [[0, 0, 0], [0, 0, 1], [0, 1, 1]]
+lock = [[1, 1, 0], [1, 1, 1], [1, 1, 1]]
 
-for i in string:
-    heapq.heappush(alpha, i)
-
-while alpha:
-    print(heapq.heappop(alpha))
+print(lock  key)
