@@ -30,8 +30,6 @@ def solution(key, lock):
                 if solve(left_key, lock):
                     return True
             down_key = move(down_key, 1)
-            if solve(down_key, lock):
-                return True
             right_key = copy.deepcopy(down_key)
             left_key = copy.deepcopy(down_key)
         for _ in range(size):
@@ -44,13 +42,9 @@ def solution(key, lock):
                 if solve(left_key, lock):
                     return True
             up_key = move(up_key, 2)
-            if solve(up_key, lock):
-                return True
             right_key = copy.deepcopy(up_key)
             left_key = copy.deepcopy(up_key)
         rotated_key = rotate(rotated_key)
-        if solve(rotated_key, lock):
-            return True
         down_key = copy.deepcopy(rotated_key)
         up_key = copy.deepcopy(rotated_key)
 
@@ -105,5 +99,3 @@ def move(array, side):
             for j in range(size-1):
                 result[i][j] = array[i][j+1]
         return result
-
-print(solution([[1,0],[0,1]], [[1, 1, 1], [1, 1, 0], [1, 0, 1]]))
