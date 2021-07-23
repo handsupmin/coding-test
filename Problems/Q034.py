@@ -9,51 +9,26 @@ def solution(key, lock):
             for j in range(len(key)):
                 temp[i][j] = key[i][j]
         key = copy.deepcopy(temp)
-    
-    if solve(key, lock):
-        return True
 
-    rotated_key = copy.deepcopy(key)
-    down_key = copy.deepcopy(key)
-    up_key = copy.deepcopy(key)
-    right_key = copy.deepcopy(key)
-    left_key = copy.deepcopy(key)
-
-    for _ in range(4):
-        for _ in range(size):
-            for _ in range(size):
-                right_key = move(right_key, 3)
-                if solve(right_key, lock):
-                    return True
-            for _ in range(size):
-                left_key = move(left_key, 4)
-                if solve(left_key, lock):
-                    return True
-            down_key = move(down_key, 1)
-            if solve(down_key, lock):
-                return True
-            right_key = copy.deepcopy(down_key)
-            left_key = copy.deepcopy(down_key)
-        for _ in range(size):
-            for _ in range(size):
-                right_key = move(right_key, 3)
-                if solve(right_key, lock):
-                    return True
-            for _ in range(size):
-                left_key = move(left_key, 4)
-                if solve(left_key, lock):
-                    return True
-            up_key = move(up_key, 2)
-            if solve(up_key, lock):
-                return True
-            right_key = copy.deepcopy(up_key)
-            left_key = copy.deepcopy(up_key)
-        rotated_key = rotate(rotated_key)
-        if solve(rotated_key, lock):
-            return True
-        down_key = copy.deepcopy(rotated_key)
-        up_key = copy.deepcopy(rotated_key)
-
+    for rota in range(4):
+        for down in range(size):
+            for up in range(size):
+                for right in range(size):
+                    for left in range(size):
+                        result_key = copy.deepcopy(key)
+                        for _ in range(rota):
+                            result_key = rotate(result_key)
+                        for _ in range(down):
+                            result_key = move(result_key, 1)
+                        for _ in range(up):
+                            result_key = move(result_key, 2)
+                        for _ in range(right):
+                            result_key = move(result_key, 3)
+                        for _ in range(left):
+                            result_key = move(result_key, 4)
+                        if solve(result_key, lock):
+                            return True
+        
     return False
 
 def rotate(array):
@@ -105,5 +80,3 @@ def move(array, side):
             for j in range(size-1):
                 result[i][j] = array[i][j+1]
         return result
-
-print(solution([[1,0],[0,1]], [[1, 1, 1], [1, 1, 0], [1, 0, 1]]))
