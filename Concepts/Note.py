@@ -24,11 +24,19 @@ for v in range(3):
 # input()은 동작 속도가 느리다.
 import sys
 # readline시 엔터가 줄바꿈 기호(\n)로 입력되는데, 이를 지우기 위하여 rstrip() 사용
-
 for i in range(10):
     data = sys.stdin.readline().rstrip()
 
 print(data)
+
+# deque
+from collections import deque
+dq = deque()
+dq.append(5)
+dq.append(4)
+dq.append(3)
+dq.popleft() # 5
+dq.pop() # 3
 
 
 # f-string
