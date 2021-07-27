@@ -1,4 +1,6 @@
 # Q036.py
+# 기둥과 보
+# https://programmers.co.kr/learn/courses/30/lessons/60061?language=python3
 
 def solution(n, build_frame):
     column = [[0] * (n + 1) for _ in range(n+1)]
