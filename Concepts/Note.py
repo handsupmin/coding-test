@@ -108,3 +108,31 @@ q = []
 heapq.heappush(q, (1, 2))
 a, b = heapq.heappop(q) # a = 1, b = 2
 
+# 순열
+from itertools import permutations
+
+list(permutations([1,2,3,4], 2))
+
+# [(1, 2), (1, 3), (1, 4), (2, 1), (2, 3), (2, 4), (3, 1), (3, 2), (3, 4), (4, 1), (4, 2), (4, 3)]
+
+
+# 중복 순열
+from itertools import product
+
+list(product([1,2,3,4], repeat=2))
+
+# [(1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (2, 2), (2, 3), (2, 4), (3, 1), (3, 2), (3, 3), (3, 4), (4, 1), (4, 2), (4, 3), (4, 4)]
+
+# 조합
+from itertools import combinations
+
+list(combinations([1,2,3,4], 2))
+
+# [(1, 2), (1, 3), (1, 4), (2, 3), (2, 4), (3, 4)]
+
+# 중복 조합
+from itertools import combinations_with_replacement
+
+list(combinations_with_replacement([1,2,3,4], 2))
+
+# [(1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (2, 2), (2, 3), (2, 4), (3, 1), (3, 2), (3, 3), (3, 4), (4, 1), (4, 2), (4, 3), (4, 4)]
