@@ -1,16 +1,25 @@
 # Test.py
 # 실험용 파일입니다.
 
-def solution(n):
-    count = 0
-    for i in range(1, (n//2 + 1)):
-        sum_of_num = 0
-        for j in range(i, n+1):
-            sum_of_num += j
-            if sum_of_num == n:
-                count += 1
-            elif sum_of_num > n:
-                break
-    return count+1
+import heapq
 
-print(solution(15))
+def solution(operations):
+    q = []
+    for value in operations:
+        oper, num = value.split()
+        if oper == 'I':
+            heapq.heappush(q, int(num))
+        elif oper == 'D':
+            if len(q) == 0:
+                continue
+            if int(num) == 1:
+                q = heapq.nlargest(len(q), q)[1:]
+                heapq.heapify(q)
+            if int(num) == -1:
+                heapq.heappop(q)
+    if len(q) == 0:
+        return [0,0]
+    else:
+        return [q[len(q)-1],q[0]]
+
+print(solution(	["I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"]))
