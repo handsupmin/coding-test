@@ -3,63 +3,67 @@
 # https://programmers.co.kr/learn/courses/30/lessons/60061?language=python3
 
 def solution(n, build_frame):
-    column = [[0] * (n + 1) for _ in range(n+1)]
-    tile = [[0] * (n + 1) for _ in range(n+1)]
     
-    x, y, a, b = 0, 0, 0, 0
-
+    answer = []
+    column = [[0] * (n+1) for _ in range(n+1)] # 기둥
+    row = [[0] * (n+1) for _ in range(n+1)] # 보
+    
     for value in build_frame:
-        x, y, a, b = map(int, value)
+        x, y, a, b = value
+        if a == 0 and b == 1: # 기둥 설치
+            if check_column(column, row, x, y):
+                column[y][x] = 1
         
-        if a == 0 and b == 1: # 기둥을 설치하는 경우
-            if check_column(x, y, column, tile):
-                column[y][x] = 1
-        elif a == 1 and b == 1: # 보를 설치하는 경우
-            if check_tile(x, y, column, tile):
-                tile[y][x] = 1
-        elif a == 0 and b == 0: # 기둥을 삭제하는 경우
+        elif a == 1 and b == 1: # 보 설치
+            if check_row(column, row, x, y):
+                row[y][x] = 1
+            
+        elif a == 0 and b == 0: # 기둥 삭제
             column[y][x] = 0
-            if check_delete(x, y, column, tile):
+            if not check_delete(column, row, x, y):
                 column[y][x] = 1
-        elif a == 1 and b == 0: # 보를 삭제하는 경우
-            tile[y][x] = 0
-            if check_delete(x, y, column, tile):
-                tile[y][x] = 1
-    
-    result = []
-    for x in range(n+1):
-        for y in range(n+1):
-            if column[y][x] == 1:
-                result.append([x, y, 0])
-            if tile[y][x] == 1:
-                result.append([x, y, 1])
-    
-    return result
+            
+        else: # 보 삭제
+            row[y][x] = 0
+            if not check_delete(column, row, x, y):
+                row[y][x] = 1
 
-def check_column(x, y, column, tile):
+    for i in range(n+1):
+        for j in range(n+1):
+            if column[j][i] == 1:
+                answer.append([i,j,0])
+            if row[j][i] == 1:
+                answer.append([i,j,1])
+    
+    
+    return answer
+
+def check_column(column, row, x, y):
     if y == 0:
         return True
     elif column[y-1][x] == 1:
         return True
-    elif tile[y][x-1] == 1 or tile[y][x] == 1:
+    elif row[y][x] == 1:
         return True
-    else:
-        return False
+    elif row[y][x-1] == 1:
+        return True
+    return False
 
-def check_tile(x, y, column, tile):
-    if column[y-1][x] == 1 or column[y-1][x+1] == 1:
+def check_row(column, row, x, y):
+    if column[y-1][x] == 1:
         return True
-    elif tile[y][x-1] == 1 and tile[y][x+1] == 1:
+    elif column[y-1][x+1] == 1:
         return True
-    else:
-        return False
+    elif row[y][x-1] == 1 and row[y][x+1] == 1:
+        return True
+    return False
 
-def check_delete(x, y, column, tile):
+def check_delete(column, row, x, y):
     n = len(column)
     for i in range(n):
         for j in range(n):
-            if column[j][i] == 1 and not check_column(i, j, column, tile):
-                return True
-            if tile[j][i] == 1 and not check_tile(i, j, column, tile):
-                return True
-    return False
+            if column[j][i] == 1 and not check_column(column, row, i, j):
+                return False
+            if row[j][i] == 1 and not check_row(column, row, i, j):                
+                return False
+    return True
