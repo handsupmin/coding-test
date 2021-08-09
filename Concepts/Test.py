@@ -1,6 +1,6 @@
 # Test.py
 # 실험용 파일입니다.
 
-a = []
-
-print(sum(a) < 5)
+a = [1, 1]
+a.append(sum(a[0:0]))
+print(a)
