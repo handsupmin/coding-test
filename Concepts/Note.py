@@ -38,7 +38,6 @@ dq.append(3)
 dq.popleft() # 5
 dq.pop() # 3
 
-
 # f-string
 answer = 7
 print(f"정답은 {answer}입니다.")
