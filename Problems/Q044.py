@@ -31,7 +31,3 @@ def solution(n, weak, dist):
         return -1
     else:
         return minimum
-# print(solution(	12, [1, 5, 6, 10], [1, 2, 3, 4]))
-# print(solution(12,	[1, 3, 4, 9, 10],	[3, 5, 7]))
-# print(solution(30, [0, 3, 11, 21], [10, 4]))
-# print(solution(200, [0, 100], [1, 1])) # 2
