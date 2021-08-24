@@ -1,6 +1,5 @@
-# Test.py
-# 실험용 파일입니다.
-
+# Q055.py
+# https://programmers.co.kr/learn/courses/30/lessons/42587
 
 from collections import deque
 
@@ -13,12 +12,11 @@ def solution(priorities, location):
     
     while q:
         j = q.popleft()
-        print(j, max(q))
+        if len(q) == 0:
+            return len(priorities)
         if j[0] >= max(q)[0]:
             count += 1
             if j[1] == location:
                 return count
         else:
             q.append(j)
-
-print(solution([2, 1, 3, 2],	2))
