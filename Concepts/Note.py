@@ -136,3 +136,93 @@ from itertools import combinations_with_replacement
 list(combinations_with_replacement([1,2,3,4], 2))
 
 # [(1, 1), (1, 2), (1, 3), (1, 4), (2, 1), (2, 2), (2, 3), (2, 4), (3, 1), (3, 2), (3, 3), (3, 4), (4, 1), (4, 2), (4, 3), (4, 4)]
+
+# open = 0, wall = 1
+OPEN, WALL = range(2)
+
+for i in [-1, 1]:
+    pass
+
+def get_next_pos():
+    return [-1, 1]
+
+for next_pos in get_next_pos():
+    pass
+
+# 문자열
+# 문자열 바꾸기
+'Hello, world!'.replace('world', 'Python')
+'Hello, Python!'
+
+# 문자 바꾸기
+table = str.maketrans('aeiou', '12345')
+'apple'.translate(table)
+'1ppl2'
+
+# 문자열 분리하기
+'apple pear grape pineapple orange'.split()
+['apple', 'pear', 'grape', 'pineapple', 'orange']
+
+# 구분자 문자열과 문자열 리스트 연결하기
+' '.join(['apple', 'pear', 'grape', 'pineapple', 'orange'])
+'apple pear grape pineapple orange'
+
+# 소문자를 대문자로 바꾸기
+'python'.upper()
+'PYTHON'
+
+# 대문자를 소문자로 바꾸기
+'PYTHON'.lower()
+'python'
+
+# 왼쪽 공백 삭제하기
+'   Python   '.lstrip()
+'Python   '
+
+# 오른쪽 공백 삭제하기
+'   Python   '.rstrip()
+'   Python'
+
+# 양쪽 공백 삭제하기
+'   Python   '.strip()
+'Python'
+
+# 왼쪽, 오른쪽, 양쪽의 특정 문자 삭제하기ㅂ
+', python.'.lstrip(',.') # rstrip, strip
+' python.'
+
+# 특수문자
+import string
+string.punctuation
+'!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+
+#  문자열 위치 찾기
+'apple pineapple'.find('pl')
+2
+'apple pineapple'.find('xy')
+-1
+
+# 오른쪽에서부터 문자열 위치 찾기
+'apple pineapple'.rfind('pl')
+12
+'apple pineapple'.rfind('xy')
+-1
+
+# 문자열 위치 찾기(없으면 에러)
+'apple pineapple'.index('pl')
+2
+
+# format 메서드 사용하기
+'Hello, {0} {2} {1}'.format('Python', 'Script', 3.6)
+'Hello, Python 3.6 Script'
+'Hello, {language} {version}'.format(language='Python', version=3.6)
+'Hello, Python 3.6'
+'Hello, {} {} {}'.format('Python', 'Script', 3.6)
+'Hello, Python Script 3.6'
+
+language = 'Python'
+version = 3.6
+f'Hello, {language} {version}'
+'Hello, Python 3.6'
+
+
