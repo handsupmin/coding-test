@@ -187,7 +187,7 @@ table = str.maketrans('aeiou', '12345')
 '   Python   '.strip()
 'Python'
 
-# 왼쪽, 오른쪽, 양쪽의 특정 문자 삭제하기ㅂ
+# 왼쪽, 오른쪽, 양쪽의 특정 문자 삭제하기
 ', python.'.lstrip(',.') # rstrip, strip
 ' python.'
 
@@ -231,3 +231,8 @@ f'Hello, {language} {version}'
 # 그 결과를 가지고 두 번째 인자를 기준으로 내림차순 정렬(-를 붙이면 내림차순 정렬)
 e = sorted(a, key = lambda x : (x[0], -x[1]))
 print(e)    # [(1, 0), (2, 1), (3, 2), (4, 3), (4, 2), (4, 0)]
+
+# copy
+import copy
+a = [[1,2],[3,4]]
+b = copy.deepcopy(a)

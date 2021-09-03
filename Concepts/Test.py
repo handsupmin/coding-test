@@ -1,37 +1,35 @@
 # Test.py
 # 실험용 파일입니다.
 
-def solution(numbers):
-    answer = ''
-    str_numbers = list(map(str, numbers))
-    sorting_list = [[] for _ in range(10)]
-    max_digit = len(str(max(numbers)))
-    
-    for num in str_numbers:
-        sorting_list[int(num[0])].append([num, len(num)])
-    
-    sorting_list.reverse()
-    
-    for value in sorting_list:
-        t_result = ''
-        if len(value) != 0:
-            for i in range(len(value)):
-                if value[i][1] == 1:
-                    value[i][0] = value[i][0]*4
-                elif value[i][1] == 2:
-                    value[i][0] = value[i][0][0] + value[i][0][1] + value[i][0][0] * 2
-                elif value[i][1] == 3:
-                    value[i][0] = value[i][0][0] + value[i][0][1] + value[i][0][2] + value[i][0][0]
-            value.sort(reverse = True, key = lambda x : (x[0], x[1]))
-            for i in range(len(value)):
-                if value[i][1] == 1:
-                    value[i][0] = value[i][0][0]
-                elif value[i][1] == 2:
-                    value[i][0] = value[i][0][0] + value[i][0][1]
-                elif value[i][1] == 3:
-                    value[i][0] = value[i][0][0] + value[i][0][1] + value[i][0][2]
-                answer += value[i][0]
-    answer = int(answer)
-    answer = str(answer)
-                
-    return answer
+def can_go(tickets, target):
+        dep = []
+        des = []
+        done = set()
+        n = len(tickets)
+        for i in range(n):
+            DEPARTURE, DESTINATION = tickets[i]
+            dep.append(DEPARTURE)
+            des.append(DESTINATION)
+        
+        count = 0
+        dep.sort()
+        des.sort()
+        for value in des:
+            if value not in done:
+                done.add(value)
+                num1 = dep.count(value)
+                num2 = des.count(value)
+                print(value, num1, num2)
+                if value == target:
+                    if (num1-1) != num2:
+                        count += 1
+                else:
+                    if num1 != num2:
+                        count += 1
+        print(count)
+        if count == 1:
+            return True
+        else:
+            return False
+
+print(can_go([["AOO", "BOO"], ["BOO", "COO"], ["COO", "DOO"], ["DOO", "EOO"], ["EOO", "DOO"], ["DOO", "COO"], ["COO", "BOO"], ["BOO", "AOO"]], "AOO"))
