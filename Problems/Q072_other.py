@@ -34,3 +34,5 @@ def solution(tickets):
     answer = dfs(graph, N, "ICN", ["ICN"])
 
     return answer
+
+print(solution([["ICN", "AOO"], ["AOO", "BOO"], ["BOO", "COO"], ["COO", "DOO"], ["DOO", "EOO"], ["EOO", "DOO"], ["DOO", "COO"], ["COO", "BOO"], ["BOO", "AOO"]]))

@@ -236,3 +236,21 @@ print(e)    # [(1, 0), (2, 1), (3, 2), (4, 3), (4, 2), (4, 0)]
 import copy
 a = [[1,2],[3,4]]
 b = copy.deepcopy(a)
+
+# defaultdict
+from collections import defaultdict
+list_dict = defaultdict(list)
+lists = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]
+for l in lists:
+    list_dict[l[0]].append(l[1])
+{'ICN': ['SFO', 'ATL'], 'SFO': ['ATL'], 'ATL': ['ICN', 'SFO']}
+
+# enumerate() 
+# index와 쌍을 이루는 튜플 리턴
+# enumerate(iter, start = 1), 1부터 시작
+for entry in enumerate(['A', 'B', 'C']):
+    print(entry)
+
+(0, 'A')
+(1, 'B')
+(2, 'C')
