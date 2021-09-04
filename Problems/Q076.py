@@ -1,4 +1,4 @@
-# Q063.py
+# Q076.py
 # 떡볶이 떡 만들기
 
 n, m = map(int, input().split())
