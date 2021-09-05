@@ -1,82 +1,58 @@
 # Test.py
 # 실험용 파일입니다.
 
-from collections import defaultdict
+# dijkstra
+import heapq
+import sys
+input = sys.stdin.readline
+INF = int(1e9)
 
-def solution(name):
-    n = len(name)
-    alphabet = defaultdict(int)
-    alphabet_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-    
-    for i, char in enumerate(alphabet_list):
-        if i <= 13:
-            alphabet[char] += i
-        else:
-            alphabet[char] += 26 - i
-        
-    visited = [0] * n
-    for i in range(n):
-        if name[i] == 'A':
-            visited[i] = 1
-    now = 0
-    if visited[0] == 1:
-        for i in range(1, n):
-            if visited[i] == 0:
-                now = i
-                break
-            if visited[-i] == 0:
-                now = -i
-                break
-    count = 0
-    while True:
-        if visited[now] == 0:
-            go = 0
-            back = 0
-            count += alphabet[name[now]]
-            visited[now] = 1
-            
-            if visited.count(1) == n:
-                return count
-            for i in range(1, n-now):
-                if visited[now + i] == 0:
-                    go = i
-                print(now, i)
-                if visited[now - i] == 0:
-                    back = i
-                if go != 0 and back != 0:
-                    if visited.count(1) == n - 1:
-                        next_move = now + go
-                        count += go
-                        break
-                    n_go = 0
-                    n_back = 0
-                    for j in range(1, n-now):
-                        if visited[now + go + j] == 0:
-                            n_go = j
-                        if visited[now - back - j] == 0:
-                            n_back = j
-                        if n_go != 0 and n_back != 0:
-                            next_move = now + go
-                            count += go
-                            break
-                        elif n_back != 0:
-                            next_move = now + go
-                            count += go
-                            break
-                        elif n_back != 0:
-                            next_move = now - back
-                            count += back
-                            break
-                    break
-                elif go != 0:
-                    next_move = now + go
-                    count += go
-                    break
-                elif back != 0:
-                    next_move = now - back
-                    count += back
-                    break
-            now = next_move
-        print(visited)
+n, m = map(int, input().split())
+start = int(input())
+graph = [[] for i in range(n + 1)]
+distance = [INF] * (n + 1)
 
-print(solution("ABABAAAAABA")) #11
+for _ in range(m):
+    a, b, c = map(int, input().split())
+    graph[a].append((b, c))
+
+def dijkstra(start):
+    visited = [0] * (n + 1)
+    q = []
+    heapq.heappush(q, (0, start))
+    distance[start] = 0
+    while q:
+        dist, now = heapq.heappop(q)
+        visited[now] = 1
+        for node, dist in graph[now]:
+            if visited[node] == 0:
+                heapq.heappush(q, (dist, node))
+                distance[node] = min(distance[node], distance[now] + dist)
+
+dijkstra(start)
+
+# 모든 노드로 가기 위한 최단 거리를 출력
+for i in range(1, n + 1):
+    # 도달할 수 없는 경우, 무한(INFINITY)이라고 출력
+    if distance[i] == INF:
+        print("INFINITY")
+    # 도달할 수 있는 경우 거리를 출력
+    else:
+        print(distance[i])
+
+"""
+입력 예시
+6 11
+1
+1 2 2
+1 3 5
+1 4 1
+2 3 3
+2 4 2
+3 2 3
+3 6 5
+4 3 3
+4 5 1
+5 3 1
+5 6 2
+"""
