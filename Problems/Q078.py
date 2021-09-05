@@ -1,5 +1,5 @@
-# Test.py
-# 실험용 파일입니다.
+# Q078.py
+# https://programmers.co.kr/learn/courses/30/lessons/42860?language=python3
 
 from collections import defaultdict
 
@@ -18,16 +18,14 @@ def solution(name):
     for i in range(n):
         if name[i] == 'A':
             visited[i] = 1
+    count = 0
     now = 0
     if visited[0] == 1:
         for i in range(1, n):
             if visited[i] == 0:
                 now = i
+                count += i
                 break
-            if visited[-i] == 0:
-                now = -i
-                break
-    count = 0
     while True:
         if visited[now] == 0:
             go = 0
@@ -40,7 +38,6 @@ def solution(name):
             for i in range(1, n-now):
                 if visited[now + i] == 0:
                     go = i
-                print(now, i)
                 if visited[now - i] == 0:
                     back = i
                 if go != 0 and back != 0:
@@ -77,6 +74,3 @@ def solution(name):
                     count += back
                     break
             now = next_move
-        print(visited)
-
-print(solution("ABABAAAAABA")) #11
