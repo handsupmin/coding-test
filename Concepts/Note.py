@@ -158,7 +158,6 @@ for next_pos in get_next_pos():
 table = str.maketrans('aeiou', '12345')
 'apple'.translate(table)
 '1ppl2'
-
 # 문자열 분리하기
 'apple pear grape pineapple orange'.split()
 ['apple', 'pear', 'grape', 'pineapple', 'orange']
