@@ -1,33 +1,37 @@
 # Test.py
 # 실험용 파일입니다.
 
-def solution(play_time, adv_time, logs):
-    play_time = change_sec(play_time)
-    adv_time = change_sec(adv_time)
-    viewer = [[0] for _ in range(play_time+1)]
+def solution(info, query):
+    result = []
+    infos = []
     
-    for l in logs:
-        s1, s2 = change_log(l)
-        s2 += 1
-        for i in range(s1, s2):
-            viewer[i] += 1
-            
-    print(viewer)   
+    for value in info:
+        lan, job, career, food, score = map(str, value.split())
+        infos.append((set([lan, job, career, food]),int(score)))
+    infos.sort(reverse = True, key = lambda x: x[1])
+    n = len(infos)
     
-    return ""
+    for value in query:
+        list_value = list(map(str, value.replace("and",'').replace("-",'').split()))
+        q = set(list_value[:-1])
+        k = len(q)
+        score = int(list_value[-1])
+        
+        count = 0
+        if k == 0:
+            for i in range(n):
+                if score <= infos[i][1]:
+                    count += 1
+                else:
+                    break
+        else:
+            for i in range(n):
+                if score <= infos[i][1]:
+                    if len(infos[i][0] & q) == k:
+                        count += 1
+                else:
+                    break
+                
+        result.append(count)
 
-def change_sec(time):
-    h, m, s = map(int, time.split(':'))
-    s += (h * 3600) + (m * 60)
-    return s
-
-def change_log(log):
-    t1, t2 = log.split('-')
-    s1, s2 = change_sec(t1), change_sec(t2)
-    return (s1, s2)
-
-def change_hour(time):
-    h, m, s = time // 3600, time // 60, time % 60
-    return str(h)+":"+str(m)+":"+str(s)
-
-print(solution("02:03:55",	"00:14:15",	["01:20:15-01:45:14", "00:40:31-01:00:00", "00:25:50-00:48:29", "01:30:59-01:53:29", "01:37:44-02:02:30"]))
+    return result
