@@ -253,3 +253,22 @@ for entry in enumerate(['A', 'B', 'C']):
 (0, 'A')
 (1, 'B')
 (2, 'C')
+
+# bisect은 이진 검색 알고리즘을 지원
+# 이진 검색 알고리즘이 깔끔하게 모듈 형태로 구현되어 있음
+# 정렬된 리스트 a 에 데이터 x을 삽입한다 가정
+# bisect_left(a, x) 
+# -> 정렬 된 순서를 유지하며 a에 x를 삽입할 때, 가장 왼쪽 인덱스 반환
+# bisect_right(a, x)
+# -> 정렬 된 순서를 유지하며 a에 x를 삽입할 때, 가장 오른쪽 인덱스 반환
+
+import bisect
+
+nums = [1,2,3,3,3,5,6,8,9]
+nums.sort() #binary search는 정렬 된 배열에서 사용해야함
+
+print(bisect.bisect_left(nums, 10)) # 9
+print(bisect.bisect_right(nums, 10)) # 9
+
+print(bisect.bisect_left(nums, 3))   # 2
+print(bisect.bisect_right(nums, 3))  # 5
