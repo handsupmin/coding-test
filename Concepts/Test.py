@@ -2,6 +2,9 @@
 # 실험용 파일입니다.
 
 a = dict()
-a['k'] = 0
-a['k'] = 'b'
-print(a)
+
+a['1'] = 3
+a['2'] = 4
+
+for i in a:
+    print(i)
