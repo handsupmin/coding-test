@@ -31,8 +31,14 @@ for _ in range(t):
                 array = []
                 array_number -= 1
             else:
-                array = array[1:]
+                if r_count % 2 == 0:
+                    array.popleft()
+                else:
+                    array.pop()
                 array_number -= 1
+    array = list(array)
+    if r_count % 2 == 1:
+        array = array[::-1]
     if result != 'error':
         result = '[' + ','.join(array) + ']'
     print(result)
