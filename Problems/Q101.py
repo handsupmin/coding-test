@@ -1,5 +1,5 @@
-# Test.py
-# 실험용 파일입니다.
+# Q101.py
+# https://www.acmicpc.net/problem/1987
 
 import sys
 
