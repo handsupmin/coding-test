@@ -272,3 +272,56 @@ print(bisect.bisect_right(nums, 10)) # 9
 
 print(bisect.bisect_left(nums, 3))   # 2
 print(bisect.bisect_right(nums, 3))  # 5
+
+# 삼항 연산자
+1 if n & (1 << nth) else 0
+
+# 2진수
+bin(3) # 0b11
+2 << 1 # 4
+a = 0b011010 # 0bxxxxx
+
+# 비트 연산
+1 << n # bit shift
+
+"""
+&	AND 연산. 둘다 참일때만 만족	(a & b) = 12 → 0000 1100
+|	OR 연산. 둘 중 하나만 참이여도 만족	(a | b) = 61 → 0011 1101
+^	XOR 연산. 둘 중 하나만 참일 때 만족	(a ^ b) = 49 → 0011 0001
+~	보수 연산.	(~a) = -61 → 1100 0011
+<<	왼쪽 시프트 연산자. 변수의 값을 왼쪽으로 지정된 비트 수 만큼 이동	a << 2 = 240 → 1111 0000
+>>	오른쪽 시프트 연산자. 변수의 값을 오른쪽으로 지정된 비트 수 만큼 이동	a >> 2 = 15 → 0000 1111
+"""
+
+# 정수의 2의 지수승 여부 확인하기
+def is_exp_binary(n):
+    return n & (n - 1) == 0
+    #  1000(2)
+    # & 111(2)
+    # --------
+    #  0000(2)
+
+# 2진수에서 1 비트의 개수 구하기
+def bit_count(n):
+    k = 0
+    count = 0
+
+    while n >= (1 << k):
+        if n & (1 << k) != 0:
+            count += 1
+        k += 1
+
+    return count
+
+# Boolean값 Toggle하기
+onoff ^= True
+
+# 비트 끄기
+def diff(n, d):
+    return n & ~(1 << d)
+
+# or의 활용
+print(False or 'this') # False(0) or X 일 시, X가 출력된다
+
+# INF를 math 모듈 없이 사용
+float('inf')
