@@ -1,5 +1,5 @@
-# Test.py
-# 실험용 파일입니다.
+# Q127.py
+# https://programmers.co.kr/learn/courses/30/lessons/77486
 
 from collections import defaultdict
 from collections import deque
@@ -42,5 +42,3 @@ def solution(enroll, referral, seller, amount):
         result.append(cost_dict[person])
     
     return result
-
-print(solution(["john", "mary", "edward", "sam", "emily", "jaimie", "tod", "young"]	,["-", "-", "mary", "edward", "mary", "mary", "jaimie", "edward"]	,["young", "john", "tod", "emily", "mary"],	[12, 4, 2, 5, 10]))
