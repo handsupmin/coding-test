@@ -325,3 +325,52 @@ print(False or 'this') # False(0) or X 일 시, X가 출력된다
 
 # INF를 math 모듈 없이 사용
 float('inf')
+
+# Counter 클래스
+# 최빈값
+# Counter는 사전(dict) 클래스의 하위 클래스
+# 리스트나 튜플에서 각 데이터가 등장한 횟수를 사전 형식으로 돌려준다.
+
+from collections import Counter
+colors = ['red', 'blue', 'red', 'green', 'blue', 'blue']
+cnt = Counter(colors)
+# Counter({'blue': 3, 'red': 2, 'green': 1})
+
+# most_common()
+# 등장한 횟수를 내림차순으로 정리하여 다음과 같이 보여준다
+
+numbers = [1, 2, 3, 3, 4, 4, 4, 5, 5]
+from collections import Counter
+cnt = Counter(numbers)
+cnt.most_common()
+
+# (숫자, 횟수)
+# [(4, 3), (3, 2), (5, 2), (1, 1), (2, 1)]
+
+# 상위 3개의 값
+cnt.most_common(3)
+# [(4, 3), (3, 2), (5, 2)]
+
+# 반올림
+# 파이썬에 내장된 round() 함수를 사용
+
+round(3.1415, 2)   #결과는 3.14
+round(31.415, -1)  #결과는 30.0
+"""
+사사오입 원칙
+round()는 사사오입 원칙을 따른다.
+반올림할 자리의 수가 5이면
+앞자리의 숫자가 짝수면 내림하고 홀수면 올림 한다.
+"""
+round(4.5)  #결과는 4
+round(3.5)  #결과는 4
+
+
+# 올림
+import math
+math.ceil(-3.14)  #결과는 -3
+math.ceil(3.14)   #결과는 4
+# 내림
+import math
+math.floor(3.14)   #결과는 3
+math.floor(-3.14)  #결과는 -4
