@@ -273,6 +273,7 @@ print(bisect.bisect_right(nums, 10)) # 9
 print(bisect.bisect_left(nums, 3))   # 2
 print(bisect.bisect_right(nums, 3))  # 5
 
+nth = 1
 # 삼항 연산자
 1 if n & (1 << nth) else 0
 
@@ -313,6 +314,7 @@ def bit_count(n):
 
     return count
 
+onoff = True
 # Boolean값 Toggle하기
 onoff ^= True
 
