@@ -376,3 +376,10 @@ math.ceil(3.14)   #결과는 4
 import math
 math.floor(3.14)   #결과는 3
 math.floor(-3.14)  #결과는 -4
+
+# 알파벳 리스트
+import string
+
+lower_alpha_list = list(string.ascii_lowercase) # 소문자
+upper_alpha_list = list(string.ascii_uppercase) # 대문자
+lower_and_upper = list(string.ascii_letters) # 소문자 + 대문자
