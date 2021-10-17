@@ -1,4 +1,5 @@
 # Test.py
 # 실험용 파일입니다.
 
-print(0 or 50)
+for target in range(256, -1, -1):
+    print(target)

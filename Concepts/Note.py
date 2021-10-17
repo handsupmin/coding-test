@@ -273,6 +273,7 @@ print(bisect.bisect_right(nums, 10)) # 9
 print(bisect.bisect_left(nums, 3))   # 2
 print(bisect.bisect_right(nums, 3))  # 5
 
+nth = 1
 # 삼항 연산자
 1 if n & (1 << nth) else 0
 
@@ -313,6 +314,7 @@ def bit_count(n):
 
     return count
 
+onoff = True
 # Boolean값 Toggle하기
 onoff ^= True
 
@@ -374,3 +376,10 @@ math.ceil(3.14)   #결과는 4
 import math
 math.floor(3.14)   #결과는 3
 math.floor(-3.14)  #결과는 -4
+
+# 알파벳 리스트
+import string
+
+lower_alpha_list = list(string.ascii_lowercase) # 소문자
+upper_alpha_list = list(string.ascii_uppercase) # 대문자
+lower_and_upper = list(string.ascii_letters) # 소문자 + 대문자
