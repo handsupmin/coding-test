@@ -37,4 +37,5 @@ def solution(lines):
             if end <= n_start <= (end + 999) or end <= n_end <= (end + 999) or n_start <= end and (end + 999) <= n_end:
                 count_end += 1
         maximum = max(maximum, count_start, count_end)
+
     return maximum
