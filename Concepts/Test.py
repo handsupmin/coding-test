@@ -1,7 +1,9 @@
 # Test.py
 # 실험용 파일입니다.
 
-a = [1, 2, 3]
+from collections import deque
 
-a.pop()
+a = deque([1, 45, 30])
+
+a = sorted(a)
 print(a)
