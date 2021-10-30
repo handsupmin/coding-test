@@ -1,7 +1,6 @@
 # Test.py
 # 실험용 파일입니다.
 
-a = [1, 2, 3]
-
-a.pop()
-print(a)
+node = '(A,B) (C,D) (E,F)'
+node = node.split()
+print(node)
