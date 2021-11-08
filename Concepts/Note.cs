@@ -36,3 +36,13 @@ ListT[0].Count
     2차원배열에서의 접근방법은 arr[1, 2]
     가변배열에서의 접근방법은 arr[1][2]
 */
+
+// Nullable
+/*
+    int?는 32비트 정수 또는 null 값을 보유할 수 있는 형식
+    string?은 모든 string 또는 null 값을 보유할 수 있는 형식
+*/
+
+// String
+string answer = "";
+answer.Length // 문자열의 길이
