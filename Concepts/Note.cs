@@ -71,3 +71,9 @@ Int32.TryParse(c, out i); // false (0)
 // 배열의 평균
 using System.Linq;
 Array.Average();
+
+// 삼항연산자
+int number = 2;
+bool isEven;
+// condition ? consequent : alternative
+isEven = (number % 2 == 0) ? true : false ;
