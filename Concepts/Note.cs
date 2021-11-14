@@ -19,18 +19,18 @@ int [][ , ] jaggedArr2 = new int[3][ , ]; // 다차원 가변 배열
 
 // 배열의 길이
 // 1차원 배열
-Array.Length
-ListT.Count // List<T>는 Length가 아니라 Count를 사용
+Array.Length;
+ListT.Count; // List<T>는 Length가 아니라 Count를 사용
 
 //2차원 배열
-Array.GetLength(0)
-ListT.Count
+Array.GetLength(0);
+ListT.Count;
 
 // 2차원 배열의 하위 배열 
-Array.GetLength(0)
-Array.GetLength(1)
-ListT.Count
-ListT[0].Count
+Array.GetLength(0);
+Array.GetLength(1);
+ListT.Count;
+ListT[0].Count;
 
 /* 주의 사항
     2차원배열에서의 접근방법은 arr[1, 2]
@@ -45,7 +45,7 @@ ListT[0].Count
 
 // String
 string answer = "";
-answer.Length // 문자열의 길이
+answer.Length; // 문자열의 길이
 
 // Convert.ToInt32 vs Int32.Parse vs Int32.TryParse
 // 테스트를 위한 string 변수 생성 및 다양한 값 할당
@@ -77,3 +77,14 @@ int number = 2;
 bool isEven;
 // condition ? consequent : alternative
 isEven = (number % 2 == 0) ? true : false ;
+
+/*
+char과 string은 int로 변환했을 때, 다르다.
+char Character = '9';
+int integer = int.Parse(Character.ToString());
+*/
+
+// 배열 <-> 리스트 변환
+using System.Linq;
+List<int> testList = testArr.ToList();
+int[] testArray = testList.ToArray();
