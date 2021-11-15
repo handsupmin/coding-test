@@ -8,7 +8,7 @@ public class Solution
     public long solution(long n)
     {
         double num = Math.Sqrt(n);
-        long integer = (int)num;
+        long integer = (long)num;
         
         if (integer == num)
         {
