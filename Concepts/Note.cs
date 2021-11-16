@@ -88,3 +88,13 @@ int integer = int.Parse(Character.ToString());
 using System.Linq;
 List<int> testList = testArr.ToList();
 int[] testArray = testList.ToArray();
+
+// char[] <-> string
+char[] a = n.ToString().ToCharArray();
+System.Convert.ToInt64(new string(a));
+
+// long -> char[] -> Array
+long n = 123454536
+char[] a = n.ToString().ToCharArray();
+// Array -> string -> long
+System.Convert.ToInt64(new string(a));
