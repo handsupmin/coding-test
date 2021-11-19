@@ -1,6 +1,8 @@
 # Test.py
 # 실험용 파일입니다.
 
-node = '(A,B) (C,D) (E,F)'
-node = node.split()
-print(node)
+while True:
+    print(1)
+    for i in range(3):
+        if i == 2:
+            break
