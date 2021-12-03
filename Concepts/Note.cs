@@ -80,6 +80,7 @@ isEven = (number % 2 == 0) ? true : false ;
 
 /*
 char과 string은 int로 변환했을 때, 다르다.
+char -> string -> int
 char Character = '9';
 int integer = int.Parse(Character.ToString());
 */
